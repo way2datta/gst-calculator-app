@@ -16,14 +16,16 @@ const itemCategoryMapping = {"Rice": "Food-grains", "TV": "Electronics", "Sofa":
 
 var item = new Item();
 item.acceptInput();
+
 console.log("Item name: "+item.name);
 console.log("Item quantity: "+item.quantity);
 console.log("Item initial price: "+item.initialPrice);
 
 var categoryName = itemCategoryMapping[item.name];
+var gstRateApplicableToItem = categoryGstRateMapping[categoryName];
 
 const itemsPricesWithoutGst = item.quantity * item.initialPrice;
-const gstOnSellingItem = itemsPricesWithoutGst * 0;
+const gstOnSellingItem = itemsPricesWithoutGst * gstRateApplicableToItem / 100;
 const sellingPrice = itemsPricesWithoutGst + gstOnSellingItem;
 
 console.log(categoryName);
