@@ -20,23 +20,27 @@ class GstRateProvider {
     }
 }
 
+class ItemsInCategory {
+    constructor() {
+        this.itemCategoryMapping = {"Rice": "Food-grains", "TV": "Electronics", "Sofa": "Furniture"};
+    }
+    getCategoryFor(itemName) {
+        return this.itemCategoryMapping[itemName];
+    }
+}
 
-const itemCategoryMapping = {"Rice": "Food-grains", "TV": "Electronics", "Sofa": "Furniture"};
-
+class SellingPriceCalculator {
+    calculate(item) {
+        var categoryName = new ItemsInCategory().getCategoryFor(item.name);
+        var gstRateApplicableToItem = new GstRateProvider().getGSTRateFor(categoryName);
+        const itemsPricesWithoutGst = item.quantity * item.initialPrice;
+        const gstOnSellingItem = itemsPricesWithoutGst * gstRateApplicableToItem / 100;
+        const sellingPrice = itemsPricesWithoutGst + gstOnSellingItem;
+        return sellingPrice;
+    }
+}
 
 var item = new Item();
 item.acceptInput();
-
-console.log("Item name: "+item.name);
-console.log("Item quantity: "+item.quantity);
-console.log("Item initial price: "+item.initialPrice);
-
-var categoryName = itemCategoryMapping[item.name];
-var gstRateApplicableToItem = new GstRateProvider().getGSTRateFor(categoryName);
-
-const itemsPricesWithoutGst = item.quantity * item.initialPrice;
-const gstOnSellingItem = itemsPricesWithoutGst * gstRateApplicableToItem / 100;
-const sellingPrice = itemsPricesWithoutGst + gstOnSellingItem;
-
-console.log(categoryName);
+var sellingPrice = new SellingPriceCalculator().calculate(item);
 console.log("Final selling price: " + sellingPrice);
