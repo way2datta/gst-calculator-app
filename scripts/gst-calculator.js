@@ -56,5 +56,7 @@ function calculateSellingPrice() {
     item.initialPrice = document.getElementById("itemIntialPrice").value;
 
     var sellingPrice = new SellingPriceCalculator().calculate(item);
-    alert("Final selling price: " + sellingPrice);
+
+    const itemSellingPrice = document.getElementById("itemSellingPrice");
+    itemSellingPrice.value = sellingPrice;
 }

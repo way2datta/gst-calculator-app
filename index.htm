@@ -82,9 +82,21 @@
                             <input type="text" class="form-control form-control-lg" id="itemIntialPrice" placeholder="Enter initial price of an item">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" value="Calculate selling price" onclick="return calculateSellingPrice()" />
+                    <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-3 control-label">Selling price</label>
+                            <div class="col-sm-9">
+                              <input type="text" readonly class="form-control-plaintext form-control-lg" id="itemSellingPrice" value="?">
+                            </div>
+                          </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 control-label"></label>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <input type="button" class="btn btn-primary" value="Calculate selling price" onclick="return calculateSellingPrice()" />
+                            </div>
+                        </div>
                     </div>
+
                 </form>
             </div>
         </div>
@@ -96,7 +108,7 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <script src="https://way2datta.github.io/gst-calculator-app/scripts/gst-calculator.js" crossorigin="anonymous"></script>
+    <script src="./scripts/gst-calculator.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
