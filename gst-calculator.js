@@ -13,7 +13,7 @@ class Item {
 
 class GstRateProvider {
     constructor() {
-        this.categoryGstRateMapping = {"Food-grains": 0, "Furniture": 5, "Electronics":18};
+        this.categoryGstRateMapping = { "Food-grains": 0, "Furniture": 5, "Electronics": 18 };
     }
     getGSTRateFor(categoryName) {
         return this.categoryGstRateMapping[categoryName];
@@ -22,7 +22,16 @@ class GstRateProvider {
 
 class ItemsInCategory {
     constructor() {
-        this.itemCategoryMapping = {"Rice": "Food-grains", "TV": "Electronics", "Sofa": "Furniture"};
+        this.itemCategoryMapping = {
+            "Rice": "Food-grains", 
+            "Wheat": "Food-grains",
+            "Table": "Furniture",
+            "Sofa": "Furniture",
+            "Chair": "Furniture",
+            "Mobile": "Electronics",
+            "Tablet": "Electronics",
+            "TV": "Electronics"
+        };
     }
     getCategoryFor(itemName) {
         return this.itemCategoryMapping[itemName];
@@ -40,7 +49,12 @@ class SellingPriceCalculator {
     }
 }
 
-var item = new Item();
-item.acceptInput();
-var sellingPrice = new SellingPriceCalculator().calculate(item);
-console.log("Final selling price: " + sellingPrice);
+function calculateSellingPrice() {
+    var item = new Item();
+    item.name = document.getElementById("itemName").value;
+    item.quantity = document.getElementById("itemQuantity").value;
+    item.initialPrice = document.getElementById("itemIntialPrice").value;
+
+    var sellingPrice = new SellingPriceCalculator().calculate(item);
+    alert("Final selling price: " + sellingPrice);
+}
