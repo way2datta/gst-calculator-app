@@ -5,6 +5,7 @@
     "webpack-dev-server": "^3.1.8"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.116",
     "awesome-typescript-loader": "^5.2.1",
     "source-map-loader": "^0.2.4"
   }
